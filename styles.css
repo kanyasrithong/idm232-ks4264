@@ -1,51 +1,181 @@
 @font-face {
-  font-family: Instrument Serif;
-  src: url(/fonts/InstrumentSerif-Regular.ttf);
+  font-family: Carattere;
+  src: url(/fonts/Carattere-Regular.ttf);
+}
+
+@font-face {
+  font-family: Abhaya Libre;
+  src: url(/fonts/Abhaya_Libre/AbhayaLibre-Regular.ttf) format("truetype");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: Abhaya Libre;
+  src: url(/fonts/Abhaya_Libre/AbhayaLibre-Medium.ttf) format("truetype");
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: Abhaya Libre;
+  src: url(/fonts/Abhaya_Libre/AbhayaLibre-SemiBold.ttf) format("truetype");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: Abhaya Libre;
+  src: url(/fonts/Abhaya_Libre/AbhayaLibre-Bold.ttf) format("truetype");
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: Abhaya Libre;
+  src: url(/fonts/Abhaya_Libre/AbhayaLibre-ExtraBold.ttf) format("truetype");
+  font-weight: 900;
 }
 
 html {
   --color-background: #FAFAFA;
-  --color-font: #707070;
-  --color-separator: #BBBBBB;
+  --color-red: #900000;
+  --color-blue: #05009C;
+  --color-green: #38552A;
 
   background-color: var(--color-background);
-  color: var(--color-font);
-  font-family: Instrument Serif;
+  font-family: Abhaya Libre;
   -webkit-font-smoothing: antialiased;
 
-  margin: 0 4rem;
+  --header-height: 130px;
+  --nav-width: 15vw;
 }
 
-h1 {
-  font-size: 4rem;
-  letter-spacing: -2px;
+h2 {
+  font-size: 32px;
+}
+
+p {
+  font-size: 1rem;
+}
+
+a {
+  text-decoration: none;
 }
 
 header {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
-  height: 148px;
+  gap: 10rem;
+
+  border-bottom: 1px solid #F3E6E6;
+  background-color: var(--color-background);
+  padding: 1.5rem 4rem 1rem;
+  width: 100%;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  .hero {
+    color: var(--color-red);
+    font-family: Carattere;
+    font-size: 4.5rem;
+    line-height: 120%;
+    letter-spacing: -2%;
+    margin: 0;
+    text-decoration: none;
+  }
+  
+  .search-bar {
+    display: flex;
+    gap: .75rem;
+
+    .search-input {
+      background-color: var(--color-background);
+      border: none;
+      color: var(--color-blue);
+      font-family: Abhaya Libre;
+      font-size: 1.5rem;
+    }
+
+    .search-input::placeholder {
+      color: var(--color-blue);
+    }
+
+    .search-input:focus {
+      background-color: var(--color-background);
+      border: none;
+      border-bottom: 1px solid var(--color-blue);
+      border-radius: 1px;
+      outline: none;
+    }
+    
+    .search-input:focus::placeholder {
+      color: transparent;
+    }
+    
+    .search-icon {
+      color: var(--color-blue);
+    }
+  }
 }
 
 nav {
   display: flex;
-  flex-direction: row;
-  gap: 4rem;
-  justify-content: center;
+  flex-direction: column;
+  width: var(--nav-width);
 
-  
-  border-top: 1px solid var(--color-separator);
-  padding: 1rem 0;
-  height: 6rem;
+  position: fixed;
 
-  .nav-item {
-    font-size: 2rem;
-    text-decoration: none;
+  h3 {
+    color: var(--color-green);
+    font-size: 1.5rem;
+    border-bottom: 1px solid var(--color-green);
+  }
+}
+
+main {
+  display: flex;
+  margin-top: var(--header-height);
+  padding: 1.5rem 4rem;
+
+  .recipe-grid {
+    display: grid;
+    grid: repeat(10, auto) / repeat(3, minmax(0,1fr));
+    gap: 32px;
+    padding-left: calc(var(--nav-width) + 4rem);
+    width: 100%;
   }
 
-  .nav-item:visited {
-    color: var(--color-font);
+  .recipe-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    border: 1px solid var(--color-green);
+    border-radius: 2px;
+    color: var(--color-green);
+    padding: 1rem;
+    text-decoration: none;
+
+    img {
+      object-fit: scale-down;
+      width: 100%;
+    }
+
+    .recipe-details {
+      display: flex;
+      flex-direction: column;
+      line-height: 120%;
+
+      .recipe-title {
+      font-size: 18px;
+      margin: 0;
+     }
+
+     .recipe-title-secondary {
+      font-size: 16px;
+      margin: 0;
+      opacity: 80%;
+     }
+    }
   }
 }
