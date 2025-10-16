@@ -157,6 +157,7 @@ main {
     text-decoration: none;
 
     img {
+      border-radius: 2px;
       object-fit: scale-down;
       width: 100%;
     }
