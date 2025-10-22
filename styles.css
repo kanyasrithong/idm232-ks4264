@@ -33,18 +33,32 @@
   font-weight: 900;
 }
 
-html {
+* {
   --color-background: #FAFAFA;
   --color-red: #900000;
   --color-blue: #05009C;
   --color-green: #38552A;
+  --color-green-light: #38552A99;
 
   background-color: var(--color-background);
+  box-sizing: border-box;
   font-family: Abhaya Libre;
   -webkit-font-smoothing: antialiased;
 
-  --header-height: 130px;
-  --nav-width: 15vw;
+  --header-height-large: 130px;
+  --header-height: 99px;
+
+  --nav-width-large: 18vw;
+  --nav-width-small: 15vw;
+
+  --space-large: 4rem;
+  --space-medium: 2rem;
+  --space-small: 1.5rem;
+  --space-xsmall: 1rem;
+}
+
+body {
+  margin: 0;
 }
 
 h2 {
@@ -63,12 +77,12 @@ header {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 10rem;
+  justify-content: center;
 
   border-bottom: 1px solid #F3E6E6;
   background-color: var(--color-background);
-  padding: 1.5rem 4rem 1rem;
-  width: 100%;
+  padding: var(--space-small) var(--space-medium) var(--space-xsmall);
+  width: 100vw;
 
   position: fixed;
   top: 0;
@@ -77,87 +91,93 @@ header {
   .hero {
     color: var(--color-red);
     font-family: Carattere;
-    font-size: 4.5rem;
+    font-size: 3rem;
     line-height: 120%;
     letter-spacing: -2%;
     margin: 0;
     text-decoration: none;
   }
-  
+
   .search-bar {
-    display: flex;
-    gap: .75rem;
+    display: none;
+  }
+}
 
-    .search-input {
-      background-color: var(--color-background);
-      border: none;
-      color: var(--color-blue);
-      font-family: Abhaya Libre;
-      font-size: 1.5rem;
-    }
+.search-bar-mobile {
+  display: flex;
+  gap: .75rem;
+  padding: 1rem;
 
-    .search-input::placeholder {
-      color: var(--color-blue);
-    }
+  border: 1px solid var(--color-blue);
+  border-radius: 100px;
 
-    .search-input:focus {
-      background-color: var(--color-background);
-      border: none;
-      border-bottom: 1px solid var(--color-blue);
-      border-radius: 1px;
-      outline: none;
-    }
-    
-    .search-input:focus::placeholder {
-      color: transparent;
-    }
-    
-    .search-icon {
-      color: var(--color-blue);
-    }
+  .search-input {
+    background-color: var(--color-background);
+    border: none;
+    color: var(--color-blue);
+    font-family: Abhaya Libre;
+    font-size: 18px;
+    width: 100%;
+  }
+
+  .search-input::placeholder {
+    color: var(--color-blue);
+  }
+
+  .search-input:focus {
+    background-color: var(--color-background);
+    border: none;
+    border-radius: 1px;
+    outline: none;
+  }
+  
+  .search-input:focus::placeholder {
+    color: transparent;
+  }
+  
+  .search-icon {
+    color: var(--color-blue);
   }
 }
 
 nav {
   display: flex;
   flex-direction: column;
-  width: var(--nav-width);
-
-  position: fixed;
 
   h3 {
     color: var(--color-green);
-    font-size: 1.5rem;
+    font-size: 18px;
     border-bottom: 1px solid var(--color-green);
   }
 }
 
 main {
   display: flex;
+  flex-direction: column;
   margin-top: var(--header-height);
-  padding: 1.5rem 4rem;
+  padding: var(--space-small) var(--space-medium);
 
   .recipe-grid {
     display: grid;
-    grid: repeat(10, auto) / repeat(3, minmax(0,1fr));
-    gap: 32px;
-    padding-left: calc(var(--nav-width) + 4rem);
+    grid: repeat(10, auto) / repeat(1, minmax(0,1fr));
+    gap: var(--space-xsmall);
     width: 100%;
   }
 
   .recipe-card {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: var(--space-xsmall);
 
     border: 1px solid var(--color-green);
-    border-radius: 2px;
+    border-radius: 3px;
     color: var(--color-green);
-    padding: 1rem;
+    height: 100%;
+    padding: var(--space-xsmall);
     text-decoration: none;
 
     img {
-      border-radius: 2px;
+      border-radius: 3px;
       object-fit: scale-down;
       width: 100%;
     }
@@ -173,9 +193,9 @@ main {
      }
 
      .recipe-title-secondary {
+      color: var(--color-green-light);
       font-size: 16px;
       margin: 0;
-      opacity: 80%;
      }
     }
   }
