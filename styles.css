@@ -88,7 +88,7 @@ header {
   top: 0;
   left: 0;
 
-  .hero {
+  .home-icon {
     color: var(--color-red);
     font-family: Carattere;
     font-size: 3rem;
