@@ -43,13 +43,14 @@
   background-color: var(--color-background);
   box-sizing: border-box;
   font-family: Abhaya Libre;
+  color: var(--color-green);
   -webkit-font-smoothing: antialiased;
 
   --header-height-large: 130px;
   --header-height: 99px;
 
-  --nav-width-large: 18vw;
-  --nav-width-small: 15vw;
+  --aside-width-large: 18vw;
+  --aside-width-small: 15vw;
 
   --space-large: 4rem;
   --space-medium: 2rem;
@@ -140,7 +141,7 @@ header {
   }
 }
 
-nav {
+aside {
   display: flex;
   flex-direction: column;
 
