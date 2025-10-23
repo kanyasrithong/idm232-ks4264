@@ -44,15 +44,15 @@
     }
   }
 
-  nav {
+  aside {
     position: fixed;
     left: var(--space-medium);
-    width: var(--nav-width-large);
+    width: var(--aside-width-large);
   }
 
   main {
     margin-top: var(--header-height-large);
-    padding-left: calc(var(--nav-width-large) + var(--space-large));
+    padding-left: calc(var(--aside-width-large) + var(--space-large));
   }
 
   .search-bar-mobile {
@@ -64,7 +64,7 @@
   main .recipe-grid {
     grid: repeat(11, auto) / repeat(3, minmax(0,1fr));
     gap: var(--space-xsmall);
-    padding-left: calc(var(--nav-width) + var(--space-large));
+    padding-left: calc(var(--aside-width) + var(--space-large));
   }
 }
 
