@@ -137,7 +137,7 @@ header {
   }
   
   .search-icon {
-    color: var(--color-blue);
+    height: 1.5rem;
   }
 }
 
