@@ -150,6 +150,28 @@ aside {
     font-size: 18px;
     border-bottom: 1px solid var(--color-green);
   }
+
+  label {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    line-height: 0;
+  }
+
+  label input {
+    accent-color: var(--color-green);
+    height: 16px;
+    width: 16px;
+  }
+
+  label:hover {
+    cursor: pointer;
+  }
+
+  label input:hover {
+    cursor: pointer;
+  }
 }
 
 main {
