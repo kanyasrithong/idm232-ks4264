@@ -1,6 +1,12 @@
 @import url(./styles.css);
 @import url(./queries.css);
 
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 header {
   z-index: 1001;
 }
@@ -9,13 +15,14 @@ h2 {
   font-size: 24px;
 }
 
-.hero {
+#hero {
   display: flex;
   flex-direction: column;
   gap: var(--space-small);
 
   overflow: hidden;
   margin: 130px var(--space-medium) var(--space-small);
+  max-width: 1280px;
 
   h1 {
     font-size: 36px;
@@ -39,14 +46,14 @@ h2 {
     width: 100%;
   }
 
-  .details {
+  #details {
     display: flex;
     flex-direction: column;
     justify-content: center;
 
     width: 100%;
 
-    .recipe-title {
+    #recipe-title {
       display: flex;
       flex-direction: column;
       gap: 0;
@@ -54,12 +61,14 @@ h2 {
   }
 }
 
-.recipe-content {
+#recipe-content {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin: var(--space-small) var(--space-medium);
   gap: 0;
+
+  margin: var(--space-small) var(--space-medium);
+  max-width: 1280px;
 
   aside {
     position: relative;
@@ -98,32 +107,32 @@ h2 {
 }
 
 @media screen and (width >= 600px) {
-  .hero {
+  #hero {
     margin: 130px var(--space-large) var(--space-small);
     width: calc(100% - 2 * (var(--space-large)));
   }
 
-  .recipe-content {
+  #recipe-content {
     margin: var(--space-small) var(--space-large);
   }
 }
 
 @media screen and (width >= 980px) {
-  .hero {
+  #hero {
     flex-direction: row-reverse;
     gap: 72px;
 
     padding-right: var(--space-large);
   }
 
-  .recipe-content {
+  #recipe-content {
     flex-direction: row;
     gap: var(--space-large);
     margin: var(--space-small) var(--space-large);
     overflow: visible;
   }
 
-  .recipe-content aside {
+  #recipe-content aside {
     position: sticky;
     top: 115px;
 
