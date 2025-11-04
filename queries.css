@@ -47,6 +47,7 @@
   aside {
     position: fixed;
     left: var(--space-medium);
+    margin: 0;
     width: var(--aside-width-large);
   }
 
