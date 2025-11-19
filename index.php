@@ -1,3 +1,7 @@
+<?php
+  
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +13,7 @@
 </head>
 <body>
   <header>
-    <a id="home-icon" href="index.html">Cookbook</a>
+    <a id="home-icon" href="index.php">Cookbook</a>
     <div id="search-bar">
       <img id="search-icon" src="assets/icons/search-icon.svg" alt="Search icon">
       <form method="post">
@@ -54,7 +58,7 @@
       </label>
     </aside>
     <div class="recipe-grid">
-      <a class="recipe-card-link" href="recipe.html">
+      <a class="recipe-card-link" href="recipe.php">
         <div class="recipe-card">
         <img src="recipe-thumbnail-test.jpg" alt="Chicken and rice">
         <div class="recipe-details">
@@ -63,7 +67,7 @@
         </div>
       </div>
       </a>
-      <a class="recipe-card-link" href="recipe.html">
+      <a class="recipe-card-link" href="recipe.php">
         <div class="recipe-card">
         <img src="recipe-thumbnail-test.jpg" alt="Chicken and rice">
         <div class="recipe-details">
@@ -72,7 +76,7 @@
         </div>
       </div>
       </a>
-      <a class="recipe-card-link" href="recipe.html">
+      <a class="recipe-card-link" href="recipe.php">
         <div class="recipe-card">
         <img src="recipe-thumbnail-test.jpg" alt="Chicken and rice">
         <div class="recipe-details">
@@ -81,7 +85,7 @@
         </div>
       </div>
       </a>
-      <a class="recipe-card-link" href="recipe.html">
+      <a class="recipe-card-link" href="recipe.php">
         <div class="recipe-card">
         <img src="recipe-thumbnail-test.jpg" alt="Chicken and rice">
         <div class="recipe-details">
