@@ -1,7 +1,9 @@
 <?php
   require_once 'db.php';
-  $sql_query = 'SELECT * FROM recipes';
-  $result = mysqli_query($connection, $sql_query);
+  
+  $stmt = $connection->prepare('SELECT * FROM recipes');
+  $stmt->execute();
+  $result = $stmt->get_result();
 ?>
 
 <!DOCTYPE html>
@@ -10,14 +12,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cookbook</title>
-  <link rel="stylesheet" href="styles/styles.css">
-  <link rel="stylesheet" href="styles/queries.css">
+  <link rel="stylesheet" href="/styles/styles.css">
+  <link rel="stylesheet" href="/styles/queries.css">
 </head>
 <body>
   <header>
     <a id="home-icon" href="index.php">Cookbook</a>
     <div id="search-bar">
-      <img id="search-icon" src="assets/icons/search-icon.svg" alt="Search icon">
+      <img id="search-icon" src="/assets/icons/search-icon.svg" alt="Search icon">
       <form method="post">
         <input id="search-input" placeholder="Find a new recipe..." type="text">
       </form>
@@ -25,7 +27,7 @@
   </header>
   <main>
     <div id="search-bar-mobile">
-      <img id="search-icon" src="assets/icons/search-icon.svg" alt="Search icon">
+      <img id="search-icon" src="/assets/icons/search-icon.svg" alt="Search icon">
       <input id="search-input" placeholder="Find a new recipe..." type="text">
     </div>
     <aside>
@@ -61,17 +63,17 @@
     </aside>
     <div class="recipe-grid">
       <?php
-        while($row = mysqli_fetch_assoc($result)) { ?>
-          <a class='recipe-card-link' href='recipe.php'>
+        while($row = mysqli_fetch_assoc($result)) : ?>
+          <a class='recipe-card-link' href='recipe.php?id=<?php echo $row['id'] ?>'>
             <div class='recipe-card'>
-              <img src='<?= 'assets/images/' . $row['img-folder'] . '/' . $row['hero-lg']  ?>' alt='Chicken and rice'>
+              <img src="<?php echo '/assets/images/' . $row['img-folder'] . '/' . $row['hero-lg']  ?>" alt='Hero image'>
               <div class='recipe-details'>
-                <p class='recipe-title'><?= $row['heading'] ?></p>
-                <p class='recipe-title-secondary'><?= $row['subheading'] ?></p>
+                <p class='recipe-title'><?php echo $row['heading'] ?></p>
+                <p class='recipe-title-secondary'><?php echo $row['subheading'] ?></p>
               </div>
             </div>
           </a>
-        <?php } ?>
+      <?php endwhile ?>
     </div>
   </main>
 </body>
