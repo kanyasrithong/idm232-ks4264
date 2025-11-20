@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Recipe</title>
-  <link rel="stylesheet" href="/styles.css">
-  <link rel="stylesheet" href="/queries.css">
-  <link rel="stylesheet" href="/recipe.css">
+  <link rel="stylesheet" href="styles/styles.css">
+  <link rel="stylesheet" href="styles/queries.css">
+  <link rel="stylesheet" href="styles/recipe.css">
 </head>
 <body>
   <header>
