@@ -1,5 +1,7 @@
 <?php
-  
+  require_once 'db.php';
+  $sql_query = 'SELECT * FROM recipes';
+  $result = mysqli_query($connection, $sql_query);
 ?>
 
 <!DOCTYPE html>
@@ -58,42 +60,18 @@
       </label>
     </aside>
     <div class="recipe-grid">
-      <a class="recipe-card-link" href="recipe.php">
-        <div class="recipe-card">
-        <img src="recipe-thumbnail-test.jpg" alt="Chicken and rice">
-        <div class="recipe-details">
-          <p class="recipe-title">Roasted Turkey Breast & Farro-Endive Salad</p>
-          <p class="recipe-title-secondary">with Miso Mayonnaise & Roasted Sweet Potatoes</p>
-        </div>
-      </div>
-      </a>
-      <a class="recipe-card-link" href="recipe.php">
-        <div class="recipe-card">
-        <img src="recipe-thumbnail-test.jpg" alt="Chicken and rice">
-        <div class="recipe-details">
-          <p class="recipe-title">Recipe Title 1</p>
-          <p class="recipe-title-secondary">Recipe Title 2</p>
-        </div>
-      </div>
-      </a>
-      <a class="recipe-card-link" href="recipe.php">
-        <div class="recipe-card">
-        <img src="recipe-thumbnail-test.jpg" alt="Chicken and rice">
-        <div class="recipe-details">
-          <p class="recipe-title">Recipe Title 1</p>
-          <p class="recipe-title-secondary">Recipe Title 2</p>
-        </div>
-      </div>
-      </a>
-      <a class="recipe-card-link" href="recipe.php">
-        <div class="recipe-card">
-        <img src="recipe-thumbnail-test.jpg" alt="Chicken and rice">
-        <div class="recipe-details">
-          <p class="recipe-title">Recipe Title 1</p>
-          <p class="recipe-title-secondary">Recipe Title 2</p>
-        </div>
-      </div>
-      </a>
+      <?php
+        while($row = mysqli_fetch_assoc($result)) { ?>
+          <a class='recipe-card-link' href='recipe.php'>
+            <div class='recipe-card'>
+              <img src='<?= 'assets/images/' . $row['img-folder'] . '/' . $row['hero-lg']  ?>' alt='Chicken and rice'>
+              <div class='recipe-details'>
+                <p class='recipe-title'><?= $row['heading'] ?></p>
+                <p class='recipe-title-secondary'><?= $row['subheading'] ?></p>
+              </div>
+            </div>
+          </a>
+        <?php } ?>
     </div>
   </main>
 </body>
