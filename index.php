@@ -1,9 +1,14 @@
 <?php
   require_once 'db.php';
-  
-  $stmt = $connection->prepare('SELECT * FROM recipes');
-  $stmt->execute();
-  $result = $stmt->get_result();
+
+  if(isset($_GET['search'])) {
+    $stmt = $connection->prepare('SELECT * FROM recipes WHERE heading, subheading, steps');
+
+  } else {
+    $stmt = $connection->prepare('SELECT * FROM recipes');
+    $stmt->execute();
+    $result = $stmt->get_result();
+  }
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +25,7 @@
     <a id="home-icon" href="index.php">Cookbook</a>
     <div id="search-bar">
       <img id="search-icon" src="/assets/icons/search-icon.svg" alt="Search icon">
-      <form method="post">
+      <form action="/index.php" method="post">
         <input id="search-input" placeholder="Find a new recipe..." type="text">
       </form>
     </div>
@@ -28,45 +33,40 @@
   <main>
     <div id="search-bar-mobile">
       <img id="search-icon" src="/assets/icons/search-icon.svg" alt="Search icon">
-      <input id="search-input" placeholder="Find a new recipe..." type="text">
+      <form method="post">
+        <input id="search-input" placeholder="Find a new recipe..." type="text">
+      </form>
     </div>
     <aside>
       <h3>Filters</h3>
-      <label for="beef">
-        <input type="checkbox" id="beef" class="filter" name="Beef">
+      <a class="filter-button" href="/index.php?search=beef">
         Beef
-      </label>
-      <label for="chicken">
-        <input type="checkbox" id="chicken" name="Chicken">
+      </a>
+      <a class="filter-button" href="/index.php?search=chicken">
         Chicken
-      </label>
-      <label for="fish">
-        <input type="checkbox" id="fish" name="Fish">
+      </a>
+      <a class="filter-button" href="/index.php?search=fish">
         Fish
-      </label>
-      <label for="pork">
-        <input type="checkbox" id="pork" name="Pork">
+      </a>
+      <a class="filter-button" href="/index.php?search=pork">
         Pork
-      </label>
-      <label for="steak">
-        <input type="checkbox" id="steak" name="Steak">
+      </a>
+      <a class="filter-button" href="/index.php?search=steak">
         Steak
-      </label>
-      <label for="turkey">
-        <input type="checkbox" id="turkey" name="Turkey">
+      </a>
+      <a class="filter-button" href="/index.php?search=turkey">
         Turkey
-      </label>
-      <label for="vegetarian">
-        <input type="checkbox" id="vegetarian" name="Vegetarian">
+      </a>
+      <a class="filter-button" href="/index.php?search=vegetarian">
         Vegetarian
-      </label>
+      </a>
     </aside>
     <div class="recipe-grid">
       <?php
         while($row = mysqli_fetch_assoc($result)) : ?>
-          <a class='recipe-card-link' href='recipe.php?id=<?php echo $row['id'] ?>'>
+          <a class='recipe-card-link' href='/recipe.php?id=<?php echo $row['id'] ?>'>
             <div class='recipe-card'>
-              <img src="<?php echo '/assets/images/' . $row['img-folder'] . '/' . $row['hero-lg']  ?>" alt='Hero image'>
+              <img src="<?php echo '/assets/images/' . $row['img_folder'] . '/' . $row['hero_lg']  ?>" alt='Hero image'>
               <div class='recipe-details'>
                 <p class='recipe-title'><?php echo $row['heading'] ?></p>
                 <p class='recipe-title-secondary'><?php echo $row['subheading'] ?></p>

@@ -145,33 +145,22 @@ aside {
   display: flex;
   flex-direction: column;
   margin: 2rem 0;
+  gap: 12px;
 
   h3 {
+    border-bottom: 1px solid var(--color-green);
     color: var(--color-green);
     font-size: 18px;
-    border-bottom: 1px solid var(--color-green);
+    margin: 0;
   }
 
-  label {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-
-    line-height: 0;
-  }
-
-  label input {
-    accent-color: var(--color-green);
-    height: 16px;
-    width: 16px;
-  }
-
-  label:hover {
-    cursor: pointer;
-  }
-
-  label input:hover {
-    cursor: pointer;
+  .filter-button {
+    display: inherit;
+    flex-direction: row;
+    justify-content: center;
+    border: 1px solid var(--color-green);
+    border-radius: 100px;
+    padding: 0.5rem 1rem;
   }
 }
 
