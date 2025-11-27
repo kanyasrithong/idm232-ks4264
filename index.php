@@ -73,7 +73,6 @@
         <button class="filter-button" name="search" value="vegetarian">
           Vegetarian
         </button>
-        <?php print_r($_POST['search']) ?>
       </form>
     </aside>
     <div class="recipe-grid">
