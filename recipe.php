@@ -3,10 +3,10 @@
 
   if(isset($_GET['id'])) {
     $search_query = $_GET['id'];
-    $stmt = $connection->prepare('SELECT heading, subheading, description, ingredients, steps, img_folder, hero_lg, hero_sm, step1_img_lg, step1_img_sm, step2_img_lg, step2_img_sm, step3_img_lg, step3_img_sm, step4_img_lg, step4_img_sm, step5_img_lg, step5_img_sm, step6_img_lg, step6_img_sm  FROM RECIPES WHERE id = ?');
+    $stmt = $connection->prepare('SELECT * FROM RECIPES WHERE id = ?');
     $stmt->bind_param("i", $search_query);
     $stmt->execute();
-    $stmt->bind_result($heading, $subheading, $description, $ingredients, $steps, $img_folder, $hero_lg, $hero_sm, $step1_img_lg, $step1_img_sm, $step2_img_lg, $step2_img_sm, $step3_img_lg, $step3_img_sm, $step4_img_lg, $step4_img_sm, $step5_img_lg, $step5_img_sm, $step6_img_lg, $step6_img_sm);
+    $stmt->bind_result($id, $heading, $subheading, $description, $ingredients, $steps, $img_folder, $hero_lg, $hero_sm, $step1_img_lg, $step1_img_sm, $step2_img_lg, $step2_img_sm, $step3_img_lg, $step3_img_sm, $step4_img_lg, $step4_img_sm, $step5_img_lg, $step5_img_sm, $step6_img_lg, $step6_img_sm);
   }
 ?>
 
@@ -29,7 +29,7 @@
     </div>
   </header>
   <?php
-    while($stmt->fetch()) : ?>
+    while ($stmt->fetch()) : ?>
       <div id="hero">
         <div id="details">
           <div id="recipe-title">
@@ -39,8 +39,8 @@
           <p><?php echo $description ?></p>
         </div>
         <picture>
-          <source media="(min-width:980px)" srcset="<?php echo "/assets/images/{$img_folder}/$hero_lg" ?>">
-          <img src="<?php echo "/assets/images/{$img_folder}/$hero_sm" ?>" alt="Chicken and rice">
+          <source media="(min-width:980px)" srcset="<?php echo "/assets/images/$img_folder/$hero_lg" ?>">
+          <img src="<?php echo "/assets/images/$img_folder/$hero_sm" ?>" alt="Chicken and rice">
         </picture>
       </div>
       <div id="recipe-content">
