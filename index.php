@@ -1,13 +1,23 @@
 <?php
   require_once 'db.php';
 
-  if(isset($_GET['search'])) {
-    $stmt = $connection->prepare('SELECT * FROM recipes WHERE heading, subheading, steps');
+  if(isset($_POST['search'])) {
+    $search_query = $_POST['search'];
+    $stmt = $connection->prepare('SELECT id, heading, subheading, img_folder, hero_lg, hero_sm FROM recipes
+    WHERE heading LIKE ?
+    OR subheading LIKE ?
+    OR ingredients LIKE ?
+    OR steps LIKE ?
+    ');
 
-  } else {
-    $stmt = $connection->prepare('SELECT * FROM recipes');
+    $search = "%{$search_query}%";
+    $stmt->bind_param("ssss", $search, $search, $search, $search);
     $stmt->execute();
-    $result = $stmt->get_result();
+    $stmt->bind_result( $id,$heading, $subheading, $img_folder, $hero_lg, $hero_sm);
+  } else {
+    $stmt = $connection->prepare('SELECT id, heading, subheading, img_folder, hero_lg, hero_sm FROM recipes');
+    $stmt->execute();
+    $stmt->bind_result( $id, $heading, $subheading, $img_folder, $hero_lg, $hero_sm);
   }
 ?>
 
@@ -25,8 +35,9 @@
     <a id="home-icon" href="index.php">Cookbook</a>
     <div id="search-bar">
       <img id="search-icon" src="/assets/icons/search-icon.svg" alt="Search icon">
-      <form action="/index.php" method="post">
-        <input id="search-input" placeholder="Find a new recipe..." type="text">
+      <form method="post">
+        <input id="search-input" name="search" placeholder="Find a new recipe..." type="text">
+        <input type="submit" hidden />
       </form>
     </div>
   </header>
@@ -35,41 +46,45 @@
       <img id="search-icon" src="/assets/icons/search-icon.svg" alt="Search icon">
       <form method="post">
         <input id="search-input" placeholder="Find a new recipe..." type="text">
+        <input type="submit" hidden />
       </form>
     </div>
     <aside>
       <h3>Filters</h3>
-      <a class="filter-button" href="/index.php?search=beef">
-        Beef
-      </a>
-      <a class="filter-button" href="/index.php?search=chicken">
-        Chicken
-      </a>
-      <a class="filter-button" href="/index.php?search=fish">
-        Fish
-      </a>
-      <a class="filter-button" href="/index.php?search=pork">
-        Pork
-      </a>
-      <a class="filter-button" href="/index.php?search=steak">
-        Steak
-      </a>
-      <a class="filter-button" href="/index.php?search=turkey">
-        Turkey
-      </a>
-      <a class="filter-button" href="/index.php?search=vegetarian">
-        Vegetarian
-      </a>
+      <form method="post">
+        <button class="filter-button" name="search" value="beef">
+          Beef
+        </button>
+        <button class="filter-button" name="search" value="chicken">
+          Chicken
+        </button>
+        <button class="filter-button" name="search" value="fish">
+          Fish
+        </button>
+        <button class="filter-button" name="search" value="pork">
+          Pork
+        </button>
+        <button class="filter-button" name="search" value="steak">
+          Steak
+        </button>
+        <button class="filter-button" name="search" value="turkey">
+          Turkey
+        </button>
+        <button class="filter-button" name="search" value="vegetarian">
+          Vegetarian
+        </button>
+        <?php print_r($_POST['search']) ?>
+      </form>
     </aside>
     <div class="recipe-grid">
       <?php
-        while($row = mysqli_fetch_assoc($result)) : ?>
-          <a class='recipe-card-link' href='/recipe.php?id=<?php echo $row['id'] ?>'>
+        while ($stmt->fetch()) : ?>
+          <a class='recipe-card-link' href='/recipe.php?id=<?php echo $id ?>'>
             <div class='recipe-card'>
-              <img src="<?php echo '/assets/images/' . $row['img_folder'] . '/' . $row['hero_lg']  ?>" alt='Hero image'>
+              <img src="<?php echo "/assets/images/$img_folder/$hero_lg"  ?>" alt='Hero image'>
               <div class='recipe-details'>
-                <p class='recipe-title'><?php echo $row['heading'] ?></p>
-                <p class='recipe-title-secondary'><?php echo $row['subheading'] ?></p>
+                <p class='recipe-title'><?php echo $heading ?></p>
+                <p class='recipe-title-secondary'><?php echo $subheading ?></p>
               </div>
             </div>
           </a>
