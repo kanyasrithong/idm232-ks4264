@@ -16,6 +16,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Recipe</title>
+  <link rel="icon" href="assets/favicon.jpg">
   <link rel="stylesheet" href="styles/styles.css">
   <link rel="stylesheet" href="styles/queries.css">
   <link rel="stylesheet" href="styles/recipe.css">
