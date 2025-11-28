@@ -6,7 +6,7 @@
     $stmt = $connection->prepare('SELECT * FROM RECIPES WHERE id = ?');
     $stmt->bind_param("i", $search_query);
     $stmt->execute();
-    $stmt->bind_result($id, $heading, $subheading, $description, $ingredients, $steps, $img_folder, $hero_lg, $hero_sm, $step1_img_lg, $step1_img_sm, $step2_img_lg, $step2_img_sm, $step3_img_lg, $step3_img_sm, $step4_img_lg, $step4_img_sm, $step5_img_lg, $step5_img_sm, $step6_img_lg, $step6_img_sm);
+    $stmt->bind_result($id, $heading, $subheading, $description, $ingredients, $steps, $img_folder, $hero_lg, $hero_sm);
   }
 ?>
 
@@ -70,7 +70,10 @@
               <div class="recipe-step">
                 <h1>Step <?php echo $step ?></h1>
                 <p><?php echo $value ?></p>
-                <img src="<?php echo "/assets/images/{$img_folder}/step{$step}-lg.jpg" ?>" alt="Chicken and rice">
+                <picture>
+                  <source media="(min-width:980px)" srcset="<?php echo "/assets/images/{$img_folder}/step{$step}-lg.jpg" ?>">
+                  <img src="<?php echo "/assets/images/{$img_folder}/step{$step}-sm.jpg" ?>" alt="Step image">
+                </picture>
               </div>
           <?php endforeach ?>
         </main>
