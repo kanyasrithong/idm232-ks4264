@@ -13,7 +13,12 @@
     $search = "%{$search_query}%";
     $stmt->bind_param("ssss", $search, $search, $search, $search);
     $stmt->execute();
-    $stmt->bind_result( $id,$heading, $subheading, $img_folder, $hero_lg, $hero_sm);
+    $stmt->store_result();
+    if ($stmt->num_rows === 0) {
+        $no_results = "No results found, try again.";
+    } else {
+      $stmt->bind_result( $id,$heading, $subheading, $img_folder, $hero_lg, $hero_sm);
+    }
   } else {
     $stmt = $connection->prepare('SELECT id, heading, subheading, img_folder, hero_lg, hero_sm FROM recipes');
     $stmt->execute();
@@ -45,7 +50,7 @@
     <div id="search-bar-mobile">
       <img id="search-icon" src="/assets/icons/search-icon.svg" alt="Search icon">
       <form method="post">
-        <input id="search-input" placeholder="Find a new recipe..." type="text">
+        <input id="search-input" name="search" placeholder="Find a new recipe..." type="text">
         <input type="submit" hidden />
       </form>
     </div>
@@ -74,9 +79,13 @@
           Vegetarian
         </button>
       </form>
+      <?php print_r($stmt->fetch()) ?>
     </aside>
     <div class="recipe-grid">
       <?php
+        if(isset($no_results)) {
+          echo "<h3>$no_results</h3>";
+        }
         while ($stmt->fetch()) : ?>
           <a class='recipe-card-link' href='/recipe.php?id=<?php echo $id ?>'>
             <div class='recipe-card'>

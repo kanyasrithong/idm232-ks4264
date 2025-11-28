@@ -108,11 +108,16 @@ header {
   display: flex;
   gap: .75rem;
   padding: 1rem;
+  width: 100%;
 
   border: 1px solid var(--color-blue);
   border-radius: 100px;
 
-  #search-input {
+  form {
+    width: 100%;
+  }
+
+  form #search-input {
     background-color: var(--color-background);
     border: none;
     color: var(--color-blue);
