@@ -79,7 +79,6 @@
           Vegetarian
         </button>
       </form>
-      <?php print_r($stmt->fetch()) ?>
     </aside>
     <div class="recipe-grid">
       <?php
