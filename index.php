@@ -32,14 +32,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cookbook</title>
-  <link rel="stylesheet" href="/styles/styles.css">
-  <link rel="stylesheet" href="/styles/queries.css">
+  <link rel="icon" href="assets/favicon.jpg">
+  <link rel="stylesheet" href="styles/styles.css">
+  <link rel="stylesheet" href="styles/queries.css">
 </head>
 <body>
   <header>
     <a id="home-icon" href="index.php">Cookbook</a>
     <div id="search-bar">
-      <img id="search-icon" src="/assets/icons/search-icon.svg" alt="Search icon">
+      <img id="search-icon" src="assets/icons/search-icon.svg" alt="Search icon">
       <form method="post">
         <input id="search-input" name="search" placeholder="Find a new recipe..." type="text">
         <input type="submit" hidden />
@@ -48,7 +49,7 @@
   </header>
   <main>
     <div id="search-bar-mobile">
-      <img id="search-icon" src="/assets/icons/search-icon.svg" alt="Search icon">
+      <img id="search-icon" src="assets/icons/search-icon.svg" alt="Search icon">
       <form method="post">
         <input id="search-input" name="search" placeholder="Find a new recipe..." type="text">
         <input type="submit" hidden />
@@ -86,11 +87,11 @@
           echo "<h3>$no_results</h3>";
         }
         while ($stmt->fetch()) : ?>
-          <a class='recipe-card-link' href='/recipe.php?id=<?php echo $id ?>'>
+          <a class='recipe-card-link' href='recipe.php?id=<?php echo $id ?>'>
             <div class='recipe-card'>
               <picture>
-                <source media="(min-width:980px)" srcset="<?php echo "/assets/images/$img_folder/$hero_lg" ?>">
-                <img src="<?php echo "/assets/images/$img_folder/$hero_sm"  ?>" alt='Hero image'>
+                <source media="(min-width:980px)" srcset="<?php echo "assets/images/$img_folder/$hero_lg" ?>">
+                <img src="<?php echo "assets/images/$img_folder/$hero_sm"  ?>" alt='Hero image'>
               </picture>
               <div class='recipe-details'>
                 <p class='recipe-title'><?php echo $heading ?></p>

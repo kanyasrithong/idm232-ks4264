@@ -3,7 +3,7 @@
 
   if(isset($_GET['id'])) {
     $search_query = $_GET['id'];
-    $stmt = $connection->prepare('SELECT * FROM RECIPES WHERE id = ?');
+    $stmt = $connection->prepare('SELECT * FROM recipes WHERE id = ?');
     $stmt->bind_param("i", $search_query);
     $stmt->execute();
     $stmt->bind_result($id, $heading, $subheading, $description, $ingredients, $steps, $img_folder, $hero_lg, $hero_sm);
@@ -16,15 +16,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Recipe</title>
-  <link rel="stylesheet" href="/styles/styles.css">
-  <link rel="stylesheet" href="/styles/queries.css">
-  <link rel="stylesheet" href="/styles/recipe.css">
+  <link rel="stylesheet" href="styles/styles.css">
+  <link rel="stylesheet" href="styles/queries.css">
+  <link rel="stylesheet" href="styles/recipe.css">
 </head>
 <body>
   <header>
     <a id="home-icon" href="index.php">Cookbook</a>
     <div id="search-bar">
-      <img id="search-icon" src="/assets/icons/search-icon.svg" alt="Search icon">
+      <img id="search-icon" src="assets/icons/search-icon.svg" alt="Search icon">
       <input id="search-input" placeholder="Find a new recipe..." type="text">
     </div>
   </header>
@@ -39,8 +39,8 @@
           <p><?php echo $description ?></p>
         </div>
         <picture>
-          <source media="(min-width:980px)" srcset="<?php echo "/assets/images/$img_folder/$hero_lg" ?>">
-          <img src="<?php echo "/assets/images/$img_folder/$hero_sm" ?>" alt="Chicken and rice">
+          <source media="(min-width:980px)" srcset="<?php echo "assets/images/$img_folder/$hero_lg" ?>">
+          <img src="<?php echo "assets/images/$img_folder/$hero_sm" ?>" alt="Chicken and rice">
         </picture>
       </div>
       <div id="recipe-content">
@@ -60,7 +60,7 @@
             <li>2 Tbsps Crumbled Goat Cheese</li>
             <li>1 Tbsp Tuscan Spice Blend (Ground Fennel Seeds, Whole Fennel Seeds, Ground Rosemary, & Ground Sage)</li>
           </ul>
-          <img src="<?php echo "/assets/images/{$img_folder}/ingredients.png" ?>" alt="Ingredients">
+          <img src="<?php echo "assets/images/{$img_folder}/ingredients.png" ?>" alt="Ingredients">
         </aside>
         <main>
           <?php
@@ -71,8 +71,8 @@
                 <h1>Step <?php echo $step ?></h1>
                 <p><?php echo $value ?></p>
                 <picture>
-                  <source media="(min-width:980px)" srcset="<?php echo "/assets/images/{$img_folder}/step{$step}-lg.jpg" ?>">
-                  <img src="<?php echo "/assets/images/{$img_folder}/step{$step}-sm.jpg" ?>" alt="Step image">
+                  <source media="(min-width:980px)" srcset="<?php echo "assets/images/{$img_folder}/step{$step}-lg.jpg" ?>">
+                  <img src="<?php echo "assets/images/{$img_folder}/step{$step}-sm.jpg" ?>" alt="Step image">
                 </picture>
               </div>
           <?php endforeach ?>

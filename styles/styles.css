@@ -1,35 +1,35 @@
 @font-face {
   font-family: Carattere;
-  src: url(/fonts/Carattere-Regular.ttf);
+  src: url(../fonts/Carattere-Regular.ttf);
 }
 
 @font-face {
   font-family: Abhaya Libre;
-  src: url(/fonts/Abhaya_Libre/AbhayaLibre-Regular.ttf) format("truetype");
+  src: url(../fonts/Abhaya_Libre/AbhayaLibre-Regular.ttf) format("truetype");
   font-weight: normal;
 }
 
 @font-face {
   font-family: Abhaya Libre;
-  src: url(/fonts/Abhaya_Libre/AbhayaLibre-Medium.ttf) format("truetype");
+  src: url(../fonts/Abhaya_Libre/AbhayaLibre-Medium.ttf) format("truetype");
   font-weight: 600;
 }
 
 @font-face {
   font-family: Abhaya Libre;
-  src: url(/fonts/Abhaya_Libre/AbhayaLibre-SemiBold.ttf) format("truetype");
+  src: url(../fonts/Abhaya_Libre/AbhayaLibre-SemiBold.ttf) format("truetype");
   font-weight: 700;
 }
 
 @font-face {
   font-family: Abhaya Libre;
-  src: url(/fonts/Abhaya_Libre/AbhayaLibre-Bold.ttf) format("truetype");
+  src: url(../fonts/Abhaya_Libre/AbhayaLibre-Bold.ttf) format("truetype");
   font-weight: 800;
 }
 
 @font-face {
   font-family: Abhaya Libre;
-  src: url(/fonts/Abhaya_Libre/AbhayaLibre-ExtraBold.ttf) format("truetype");
+  src: url(../fonts/Abhaya_Libre/AbhayaLibre-ExtraBold.ttf) format("truetype");
   font-weight: 900;
 }
 
