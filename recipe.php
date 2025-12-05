@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="styles/recipe.css">
 </head>
 <body>
-  <?php include 'assets/components/header.php'; ?>
+  <?php include 'components/header.php'; ?>
   <?php
     while ($stmt->fetch()) : ?>
       <div id="hero">
