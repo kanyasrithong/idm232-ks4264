@@ -1,17 +1,25 @@
 <?php
   require_once 'db.php';
 
-  if(isset($_POST['search'])) {
-    $search_query = $_POST['search'];
-    $stmt = $connection->prepare('SELECT id, heading, subheading, img_folder, hero_lg, hero_sm FROM recipes
-    WHERE heading LIKE ?
-    OR subheading LIKE ?
-    OR ingredients LIKE ?
-    OR steps LIKE ?
-    ');
+  if(isset($_POST['filter']) or isset($_POST['search'])) {
+    if (isset($_POST['filter'])) {
+      $search_query = $_POST['filter'];
+      $stmt = $connection->prepare('SELECT id, heading, subheading, img_folder, hero_lg, hero_sm FROM recipes WHERE filter LIKE ?');
+      $search = "%{$search_query}%";
+      $stmt->bind_param("s", $search);
+    } else {
+      $search_query = $_POST['search'];
+      $stmt = $connection->prepare('SELECT id, heading, subheading, img_folder, hero_lg, hero_sm
+      FROM recipes
+      WHERE heading LIKE ?
+      OR subheading LIKE ?
+      OR ingredients LIKE ?
+      OR steps LIKE ?
+      ');
+      $search = "%{$search_query}%";
+      $stmt->bind_param("ssss", $search, $search, $search, $search);
+    }
 
-    $search = "%{$search_query}%";
-    $stmt->bind_param("ssss", $search, $search, $search, $search);
     $stmt->execute();
     $stmt->store_result();
     if ($stmt->num_rows === 0) {
@@ -58,19 +66,19 @@
     <aside>
       <h3>Filters</h3>
       <form method="post">
-        <button class="filter-button" name="search" value="beef">
+        <button class="filter-button" name="filter" value="beef">
           Beef
         </button>
-        <button class="filter-button" name="search" value="pork">
+        <button class="filter-button" name="filter" value="pork">
           Pork
         </button>
-        <button class="filter-button" name="search" value="poultry">
+        <button class="filter-button" name="filter" value="poultry">
           Poultry
         </button>
-        <button class="filter-button" name="search" value="seafood">
+        <button class="filter-button" name="filter" value="seafood">
           Seafood
         </button>
-        <button class="filter-button" name="search" value="vegetarian">
+        <button class="filter-button" name="filter" value="vegetarian">
           Vegetarian
         </button>
       </form>
