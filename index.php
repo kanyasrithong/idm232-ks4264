@@ -61,20 +61,14 @@
         <button class="filter-button" name="search" value="beef">
           Beef
         </button>
-        <button class="filter-button" name="search" value="chicken">
-          Chicken
-        </button>
-        <button class="filter-button" name="search" value="fish">
-          Fish
-        </button>
         <button class="filter-button" name="search" value="pork">
           Pork
         </button>
-        <button class="filter-button" name="search" value="steak">
-          Steak
+        <button class="filter-button" name="search" value="poultry">
+          Poultry
         </button>
-        <button class="filter-button" name="search" value="turkey">
-          Turkey
+        <button class="filter-button" name="search" value="seafood">
+          Seafood
         </button>
         <button class="filter-button" name="search" value="vegetarian">
           Vegetarian
