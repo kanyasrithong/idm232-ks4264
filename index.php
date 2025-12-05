@@ -45,16 +45,7 @@
   <link rel="stylesheet" href="styles/queries.css">
 </head>
 <body>
-  <header>
-    <a id="home-icon" href="index.php">Cookbook</a>
-    <div id="search-bar">
-      <img id="search-icon" src="assets/icons/search-icon.svg" alt="Search icon">
-      <form method="post">
-        <input id="search-input" name="search" placeholder="Find a new recipe..." type="text">
-        <input type="submit" hidden />
-      </form>
-    </div>
-  </header>
+  <?php include 'assets/components/header.php'; ?>
   <main>
     <div id="search-bar-mobile">
       <img id="search-icon" src="assets/icons/search-icon.svg" alt="Search icon">

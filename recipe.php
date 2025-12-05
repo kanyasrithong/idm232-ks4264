@@ -22,13 +22,7 @@
   <link rel="stylesheet" href="styles/recipe.css">
 </head>
 <body>
-  <header>
-    <a id="home-icon" href="index.php">Cookbook</a>
-    <div id="search-bar">
-      <img id="search-icon" src="assets/icons/search-icon.svg" alt="Search icon">
-      <input id="search-input" placeholder="Find a new recipe..." type="text">
-    </div>
-  </header>
+  <?php include 'assets/components/header.php'; ?>
   <?php
     while ($stmt->fetch()) : ?>
       <div id="hero">
