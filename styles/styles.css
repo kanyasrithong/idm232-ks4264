@@ -84,6 +84,7 @@ header {
   background-color: var(--color-background);
   padding: var(--space-small) var(--space-medium) var(--space-xsmall);
   width: 100vw;
+  z-index: 1000;
 
   position: fixed;
   top: 0;
@@ -228,5 +229,9 @@ main {
       margin: 0;
      }
     }
+  }
+
+  .recipe-card:hover {
+    transform: scale(1.03);
   }
 }
