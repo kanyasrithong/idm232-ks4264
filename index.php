@@ -3,21 +3,9 @@
 
   if(isset($_POST['filter']) or isset($_POST['search'])) {
     if (isset($_POST['filter'])) {
-      $search_query = $_POST['filter'];
-      $stmt = $connection->prepare('SELECT id, heading, subheading, img_folder, hero_lg, hero_sm FROM recipes WHERE filter LIKE ?');
-      $search = "%{$search_query}%";
-      $stmt->bind_param("s", $search);
+      require_once 'functions/filter.php';
     } else {
-      $search_query = $_POST['search'];
-      $stmt = $connection->prepare('SELECT id, heading, subheading, img_folder, hero_lg, hero_sm
-      FROM recipes
-      WHERE heading LIKE ?
-      OR subheading LIKE ?
-      OR ingredients LIKE ?
-      OR steps LIKE ?
-      ');
-      $search = "%{$search_query}%";
-      $stmt->bind_param("ssss", $search, $search, $search, $search);
+      require_once 'functions/search.php';
     }
 
     $stmt->execute();
