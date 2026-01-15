@@ -1,19 +1,20 @@
 <?php
   require_once 'db.php';
 
-  if(isset($_POST['filter']) or isset($_POST['search'])) {
-    if (isset($_POST['filter'])) {
+  if(isset($_GET['filter']) or isset($_GET['search'])) {
+    if (isset($_GET['filter'])) {
       require_once 'functions/filter.php';
     } else {
       require_once 'functions/search.php';
     }
-
+    $search = "%{$search_query}%";
     $stmt->execute();
     $stmt->store_result();
+
     if ($stmt->num_rows === 0) {
-        $no_results = "No results found, try again.";
+      $no_results = "No results found, try again.";
     } else {
-      $stmt->bind_result( $id,$heading, $subheading, $img_folder, $hero_lg, $hero_sm);
+      $stmt->bind_result( $id, $heading, $subheading, $img_folder, $hero_lg, $hero_sm);
     }
   } else {
     $stmt = $connection->prepare('SELECT id, heading, subheading, img_folder, hero_lg, hero_sm FROM recipes');
@@ -37,14 +38,14 @@
   <main>
     <div id="search-bar-mobile">
       <img id="search-icon" src="assets/icons/search-icon.svg" alt="Search icon">
-      <form method="post">
+      <form method="get">
         <input id="search-input" name="search" placeholder="Find a new recipe..." type="text">
         <input type="submit" hidden />
       </form>
     </div>
     <aside>
       <h3>Filters</h3>
-      <form method="post">
+      <form method="get">
         <button class="filter-button" name="filter" value="beef">
           Beef
         </button>
